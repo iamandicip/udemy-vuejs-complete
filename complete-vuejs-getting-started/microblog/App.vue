@@ -1,6 +1,10 @@
 <template>
+  <input type="text" 
+    :value="currentTag"
+    @input="setHashtag"
+  />
   <card 
-    v-for="post in store.state.posts"
+    v-for="post in filteredPosts"
     :key="post.id"
   >
     <template v-slot:title>
@@ -14,8 +18,6 @@
     <template v-slot:description>
       <controls :post="post"/>
     </template>
-
-    
   </card>
 </template>
 
@@ -23,6 +25,7 @@
 import { store } from './store.js'
 import Card from '../pokemon/Card.vue'
 import Controls from './Controls.vue'
+import { computed } from 'vue'
 
 export default {
   components: {
@@ -31,13 +34,19 @@ export default {
   },
 
   setup() {
+
+    const setHashtag = ($evt) => {
+      store.setHashtag($evt.target.value)
+    }
+
     return {
-      store
+      setHashtag,
+      filteredPosts: computed(() => store.filteredPosts),
+      currentTag: computed(() => store.state.currentTag)
     }
   }
 }
 </script>
 
 <style scoped>
-
 </style>
