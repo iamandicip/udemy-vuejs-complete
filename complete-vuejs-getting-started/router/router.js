@@ -3,7 +3,7 @@ import {
   createRouter
 } from 'vue-router'
 import Posts from './Posts.vue'
-import Post from './Posts.vue'
+import Post from './Post.vue'
 import NewPost from './NewPost.vue'
 
 const router = createRouter({
@@ -21,7 +21,6 @@ const router = createRouter({
           path: ':id',
           component: Post
         }
-
       ]
     }
   ]

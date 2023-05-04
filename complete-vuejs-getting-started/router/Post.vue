@@ -1,7 +1,7 @@
 <template>
-  <h4>Title</h4>
+  <h4>{{ post.title }}</h4>
   <p>
-    Content
+    {{ post.content }}
   </p>
 </template>
 
