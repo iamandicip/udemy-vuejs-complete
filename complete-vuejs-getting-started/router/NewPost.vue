@@ -16,37 +16,22 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
-import { useRouter } from 'vue-router'
-import { usePosts } from './usePosts'
 
 export default {
-  setup() {
-    
-    const router = useRouter()
-
-    const postStore = usePosts()
-
-    const newPost = reactive({
-      title: '',
-      content: ''
-    })
-
-    const submit = () => {
-      const id = postStore.posts.value.length + 1 
-
-      postStore.addPost({
-        title: newPost.title,
-        content: newPost.content,
-        id
-      })
-
-      router.push(`/posts/${id}`)
-    }
-  
+  data() {
     return {
-      newPost,
-      submit
+      newPost: {
+        title: '',
+        content: ''
+      }
+    }
+  },
+  methods: {
+    submit() {
+      this.$emit('createPost', {
+        title: this.newPost.title,
+        content: this.newPost.content
+      })
     }
   }
 }

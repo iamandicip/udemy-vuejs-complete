@@ -9,18 +9,30 @@
       </router-link>
     </li>
   </ul>
-  <router-view />
+  <router-view 
+    :posts="posts"
+    @createPost="createPost"
+    />
 </template>
 
 <script>
-import { usePosts } from './usePosts'
+import { testPosts } from '../microblog/testPosts';
 export default {
-  setup() {
+  data() {
+    return { 
+      posts: testPosts
+    }
+  },
+  methods: {
+    createPost(newPost) {
+      const id = this.posts.length + 1 
+      this.posts.push({
+        id: id,
+        title: newPost.title,
+        content: newPost.content
+      })
 
-    const postStore = usePosts()
-
-    return {
-      posts: postStore.posts,
+      this.$router.push(`/posts/${id}`)
     }
   }
 }
