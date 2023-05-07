@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import { useStore } from 'vuex'
-import { computed, onMounted } from 'vue'
 
 export default {
   created() {
