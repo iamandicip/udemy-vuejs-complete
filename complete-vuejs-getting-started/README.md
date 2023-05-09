@@ -95,3 +95,11 @@ Combine the Composition API, Vue Router and Vuex to build a large, complex appli
 - desien patterns
 - vue/vuex/vue-router
 - optimizing with caching in Vuex
+
+## What next?
+
+- replace Header with current album
+- adding a like for a photo
+- improve look and feel
+- rewrite all projects in both Options + Composition API
+- try using/reading libraries. Example: VueUse: https://github.com/vueuse/vueuse
